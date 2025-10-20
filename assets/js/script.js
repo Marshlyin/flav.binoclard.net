@@ -48,7 +48,6 @@ var repeat = function (text, num) {
             let subCommand = rootCommand[1];
 
             switch (rootCommand[0]) {
-                // could really clean this up but oh well
                 case "os":
                     dostoy.println(" "),
                     dostoy.color(11,0),
@@ -135,6 +134,21 @@ var repeat = function (text, num) {
                         dostoy.println(""); 
                     }
                     break;
+                case "binoclard": 
+                    dostoy.println(""),
+                    dostoy.color(11,0),
+                    dostoy.println(dostoy.chr("201,205,205") + " Binoclard | Kezako ? " + dostoy.chr(repeat("205,",62) + "187")),
+                    dostoy.println(dostoy.chr("186,0") + "Les Binoclards sont une micro-communaute d'amis, de bidouilleurs qui cherchent a    " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "s'amuser et creer en dehors des geants du web via de nombreux services autoheberges." + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",84)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "Streaming video, irc, teamspeak, recommandations musicales, livre de recettes...    " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "On trouve de tout chez les binoclards !                                             " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("205,",85)) + dostoy.chr("185")),
+                    dostoy.println(dostoy.chr("186,0") + "                                                   ---->  www.binoclard.net  <----  " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("200,205,205") + dostoy.chr(repeat("205,",61)) + " binoclardement " +  dostoy.chr("0,1,0,205,205,205,205,188")),
+                    dostoy.color(0,11),
+                    dostoy.println(""); 
+                break;
                 case "changelog": 
                     dostoy.println(dostoy.chr("201,205,205") + " Changelog " + dostoy.chr(repeat("205,",72) + "187")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
@@ -143,6 +157,7 @@ var repeat = function (text, num) {
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + "- Ajout du changelog                                                               " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Ajout de la commande binoclard                                                   " + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + "- Ajout de la sous commande /github dans about                                     " + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + "- Suppression de characteres non interpretes                                       " + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
@@ -156,9 +171,9 @@ var repeat = function (text, num) {
                     dostoy.println(dostoy.chr("200,205,205") + dostoy.chr(repeat("205,",76)) +  dostoy.chr("0,1,0,205,205,205,205,188"))
                     break;
                 case "help":
-                    // THEME THIS IT LOOKS UGLY AAA
                     dostoy.println("   " + "about         |" + " Plus d'informations sur le createur de FlavOS."),
                     dostoy.println("   " + "os            |" + " Plus d'informations sur le systeme d'exploitation FlavOS."),
+                    dostoy.println("   " + "binoclard     |" + " Plus d'informations sur la communaute binoclard"),
                     dostoy.println("   " + "changelog     |" + " Voir les nouveautes."),
                     dostoy.println("   " + "cls           |" + " Nettoie l'invite de commande."),
                     dostoy.println("");
