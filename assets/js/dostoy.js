@@ -74,41 +74,6 @@ var dostoy = function () {
         [255, 255, 255]
     ];
 
-    /**
-     * index starts at the first printable keyCode (code 48, char "0")
-     **/
-
-    var baseChars = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-        "", "", "", "", "", "", "",
-        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-        "", "", "", "", "",
-        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "+", "", "-", ".", "\/", // numpad
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        ";", "=", ",", "-", ".", "/", "`",
-        "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-        "", "", "", "", "", "",
-        "[", "\\", "]", "'"
-    ];
-
-    var shiftChars =
-        [")", "!", "@", "#", "$", "%", "^", "&", "*", "(",
-            "", "", "", "", "", "", "",
-            "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-            "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", // numpad
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-            ":", "+", "<", "_", ">", "?", "~",
-            "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", "",
-            "{", "|", "}", "\""
-        ];
-
     var byte2bits = function (a) {
         var tmp = "";
         for (var i = 128; i >= 1; i /= 2)
@@ -275,7 +240,6 @@ var dostoy = function () {
 
     var initInput = function (inputSource) {
         inputSource.addEventListener("keydown", function (evt) {
-
             if (singleKeyInputHandler) {
                 singleKeyInputHandlerUsed = true;
                 singleKeyInputHandler(evt.keyCode);
@@ -291,45 +255,36 @@ var dostoy = function () {
             evt.preventDefault();
 
             var char;
+            switch (evt.keyCode) {
+                case 8: // backspace
+                    if (curX > prompt.length) {
+                        curX--;
+                        print(" ");
+                        curX--;
+                        cursorBlink();
+                        inputBuffer = inputBuffer.substring(0, inputBuffer.length - 1);
+                        char = "";
+                    }
+                    break;
+                case 13: //enter
+                    newLine();
+                    if (inputBuffer.length > 0) {
+                        onCommand(inputBuffer);
+                    }
 
-            if (evt.keyCode >= 48) {
+                    inputBuffer = "";
 
-                if (evt.shiftKey)
-                    char = shiftChars[evt.keyCode - 48];
+                    if (shellInputHandler && !applicationInputHandler && !singleKeyInputHandlerUsed) doPrompt();
 
-                else
-                    char = baseChars[evt.keyCode - 48];
-
-            } else {
-
-                switch (evt.keyCode) {
-                    case 8: // backspace
-                        if (curX > prompt.length) {
-                            curX--;
-                            print(" ");
-                            curX--;
-                            cursorBlink();
-                            inputBuffer = inputBuffer.substring(0, inputBuffer.length - 1);
-                            char = "";
-                        }
-                        break;
-                    case 13: //enter
-
-                        newLine();
-                        if (inputBuffer.length > 0) {
-                            onCommand(inputBuffer);
-                        }
-
-                        inputBuffer = "";
-
-
-                        if (shellInputHandler && !applicationInputHandler && !singleKeyInputHandlerUsed) doPrompt();
-
-                        break;
-                    case 32: // space
-                        char = " ";
-                        break;
-                }
+                    break;
+                case 32: // space
+                    char = " ";
+                    break;
+                case 16: // shift
+                    break;
+                default:
+                    char = evt.key;
+                    break;
             }
 
 
