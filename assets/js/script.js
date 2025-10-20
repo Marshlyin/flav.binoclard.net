@@ -52,7 +52,7 @@ var repeat = function (text, num) {
                     dostoy.println(" "),
                     dostoy.color(11,0),
                     dostoy.println(dostoy.chr("201" + repeat(",205",60) + ",187")),
-                    dostoy.println(dostoy.chr("186") + "       FlavOS | ver. 0.1-alpha, build 0.0.013               " + dostoy.chr("186")),
+                    dostoy.println(dostoy.chr("186") + "       FlavOS | ver. 0.1-beta, build 0.0.013               " + dostoy.chr("186")),
 					dostoy.println(dostoy.chr("186") + "                (c) Binoclard Inc. 2025                     " + dostoy.chr("186")),
                     dostoy.println(dostoy.chr("186") + "                        -----                               " + dostoy.chr("186")),
                     dostoy.println(dostoy.chr("186") + "            Built with DOSToy.js and 98.css                 " + dostoy.chr("186")),
