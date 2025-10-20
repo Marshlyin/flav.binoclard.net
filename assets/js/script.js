@@ -102,7 +102,7 @@ var repeat = function (text, num) {
                                 dostoy.println("");
                                 break;
                             case "/cv":
-                                window.open("public/docs/cv_flavien_belli_v0.6.pdf", "tab")
+                                window.open("public/docs/cv_flavien_bellicv_fla.pdf", "tab")
                                 dostoy.println("  >>> Telechargement du CV.."),
                                 dostoy.println("");
                                 break;
