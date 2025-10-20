@@ -1,40 +1,4 @@
-// webcage | console initialisation script
-// This script contains every single command for the OS.
-// - Countdown Timer
-// Set the date we're counting down to
-var deadline = 'October 08 2021 00:00:00 GMT-0600';
-function getTimeRemaining(endtime){
-  var total = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor( (total/1000) % 60 );
-  var minutes = Math.floor( (total/1000/60) % 60 );
-  var hours = Math.floor( (total/(1000*60*60)) % 24 );
-  var days = Math.floor( total/(1000*60*60*24) );
-
-        return {
-            total,
-            days,
-            hours,
-            minutes,
-            seconds
-        };
-    }
-
 window.onload = function () {
-
-    // create the audio element dynamically so we can attach an event listener, we can have random songs then
-    // var sound      = document.createElement('audio');
-    // sound.id       = 'audio-player';
-    // sound.src      = 'assets/p2padmin/confidential/s1.mp3';
-    // sound.type     = 'audio/mpeg';
-    // document.getElementById('song').appendChild(sound);
-
-    // // cycle the songs
-    // document.getElementById('audio-player').addEventListener('ended', (e) => {
-    //     index = (index + 1) % songsObject.length;
-    //     document.getElementById("audio-player").src = songsObject[index].audio;
-    //     e.srcElement.play();
-    // }, false);
-// -- end of Music Player (s/o trahax)
 
 // character repeat function
 var repeat = function (text, num) {
@@ -64,7 +28,7 @@ var repeat = function (text, num) {
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",201" + repeat(",205",24) + ",187")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",14)) + "   FlavOS " + dostoy.chr("186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",12) + ",205,205,205,205,205,205,205,205,205,205,205,205") + dostoy.chr("185")),
-            dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",14)) + "ver. 0.1a " + dostoy.chr("186")),
+            dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",14)) + "ver. 0.1b " + dostoy.chr("186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",6)) + "[version d'essai] " + dostoy.chr("186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 79) + ",201" + repeat(",205",10) +",202" + repeat(",205",24) + ",186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 79) + ",186" + repeat(",0",10)) + " (c) 2025, Binoclard Inc." + dostoy.chr("186")),
@@ -95,7 +59,6 @@ var repeat = function (text, num) {
                     dostoy.println(dostoy.chr("186") + "            Built with DOSToy.js and 98.css                 " + dostoy.chr("186")),
                     dostoy.println(dostoy.chr("200" + repeat(",205",60) + ",188")),
                     dostoy.color(0,11),
-                    // dostoy.println("Licensed to: root@localhostt.com [trial]" + "      " + "Expires: " + getTimeRemaining(deadline).days +" Days"),
                     dostoy.println(" ");
                     break;
 
@@ -108,7 +71,7 @@ var repeat = function (text, num) {
                                 dostoy.color(11,0),
                                 dostoy.println(dostoy.chr("201,205,205") + " 7lav | stack " + dostoy.chr(repeat("205,",70) + "187")),
                                 dostoy.println(dostoy.chr("186,0") + "Developpeur web fullstack, specialise en React (typescript), FastAPI (Python) &     " + dostoy.chr("0,186")),
-                                dostoy.println(dostoy.chr("186,0") + "Spring (Java). Polyvalent en base de données SQL / NoSQL, DynamoDB.                 " + dostoy.chr("0,186")),
+                                dostoy.println(dostoy.chr("186,0") + "Spring (Java). Polyvalent en base de donnees SQL / NoSQL, DynamoDB.                 " + dostoy.chr("0,186")),
                                 dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",84)) + dostoy.chr("0,186")),
                                 dostoy.println(dostoy.chr("186,0") + "Bidouilleur devant l'eternel, il aime egalement administrer ses serveurs et bricoler" + dostoy.chr("0,186")),
                                 dostoy.println(dostoy.chr("186,0") + "des programmes simples sur son temps libre.                                         " + dostoy.chr("0,186")),
@@ -123,9 +86,16 @@ var repeat = function (text, num) {
                                 dostoy.color(0,11),
                                 dostoy.println("");
                                 break;
+                            case "/github": 
+                                window.open("https://www.github.com/Marshlyin","tab"),
+                                dostoy.println("  >>> Redirection vers Marshlyin sur Github.."),
+                                dostoy.color(0,11),
+                                dostoy.println("");
+                                break;
                             case "/mail": 
                                 window.open("mailto:contact-flav-os@pm.me","tab"),
-                                dostoy.println("  >>> Ouverture de votre client mail par défault.."),
+                                dostoy.println("  >>> Ouverture de votre client mail par default.."),
+                                dostoy.println("  >>> Si le client mail n'est pas defini, le mail est a envoyer a flavien.belli@protonmail.com"),
                                 dostoy.println("");
                                 break;
                             case "/tel": 
@@ -145,7 +115,7 @@ var repeat = function (text, num) {
                             default:
                                 dostoy.color(0,4),
                                 dostoy.println("error [-2]: unknown subcommand"),
-                                dostoy.println("les arguments disponibles sont :  /stack, /tel, /mail, /linkedin, /cv, /discord"),
+                                dostoy.println("les arguments disponibles sont :  /github, /stack, /tel, /mail, /linkedin, /cv, /discord"),
                                 dostoy.color(0,11),
                                 dostoy.println("");   
                         }
@@ -159,11 +129,31 @@ var repeat = function (text, num) {
                         dostoy.println(dostoy.chr("186,0") + "Flav est disponible par e-mail et par discord, si vous avez besoin de le contacter  " + dostoy.chr("0,186")),
                         dostoy.println(dostoy.chr("186,0") + "a propos de FlavOS ou pour des raisons professionnelles.                            " + dostoy.chr("0,186")),
                         dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("205,",85)) + dostoy.chr("185")),
-                        dostoy.println(dostoy.chr("186,0") + "                         sub-commands: /tel, /mail, /linkedin, /cv, /discord, /stack" + dostoy.chr("0,186")),
+                        dostoy.println(dostoy.chr("186,0") + "                sub-commands: /github, /tel, /mail, /linkedin, /cv, /discord, /stack" + dostoy.chr("0,186")),
                         dostoy.println(dostoy.chr("200,205,205") + dostoy.chr(repeat("205,",61)) + " binoclardement " +  dostoy.chr("0,1,0,205,205,205,205,188")),
                         dostoy.color(0,11),
                         dostoy.println(""); 
                     }
+                    break;
+                case "changelog": 
+                    dostoy.println(dostoy.chr("201,205,205") + " Changelog " + dostoy.chr(repeat("205,",72) + "187")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====     Version 0.1.1     ====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Ajout du changelog                                                               " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Ajout de la sous commande /github dans about                                     " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Suppression de characteres non interpretes                                       " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====     Version 0.1.0     ====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Creation du FlavOS                                                               " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Ajout des commandes about, os et cls et sous commandes                           " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("200,205,205") + dostoy.chr(repeat("205,",76)) +  dostoy.chr("0,1,0,205,205,205,205,188"))
                     break;
                 case "help":
                     // THEME THIS IT LOOKS UGLY AAA
