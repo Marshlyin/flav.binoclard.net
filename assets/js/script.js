@@ -29,7 +29,7 @@ var repeat = function (text, num) {
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",201" + repeat(",205",24) + ",187")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",14)) + "   FlavOS " + dostoy.chr("186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",12) + ",205,205,205,205,205,205,205,205,205,205,205,205") + dostoy.chr("185")),
-            dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",14)) + "ver. 0.2a " + dostoy.chr("186")),
+            dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",14)) + "ver. 0.2b " + dostoy.chr("186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 90) + ",186" + repeat(",0",6)) + "[version d'essai] " + dostoy.chr("186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 79) + ",201" + repeat(",205",10) +",202" + repeat(",205",24) + ",186")),
             dostoy.println(dostoy.chr("0" + repeat(",0", 79) + ",186" + repeat(",0",10)) + " (c) 2025, Binoclard Inc." + dostoy.chr("186")),
@@ -53,7 +53,7 @@ var repeat = function (text, num) {
                     dostoy.println(" "),
                     dostoy.color(11,0),
                     dostoy.println(dostoy.chr("201" + repeat(",205",60) + ",187")),
-                    dostoy.println(dostoy.chr("186") + "       FlavOS | ver. 0.2-alpha, build 0.2.103               " + dostoy.chr("186")),
+                    dostoy.println(dostoy.chr("186") + "       FlavOS | ver. 0.2-beta, build 0.2.235                " + dostoy.chr("186")),
 					dostoy.println(dostoy.chr("186") + "                (c) Binoclard Inc. 2025                     " + dostoy.chr("186")),
                     dostoy.println(dostoy.chr("186") + "                        -----                               " + dostoy.chr("186")),
                     dostoy.println(dostoy.chr("186") + "            Built with DOSToy.js and 98.css                 " + dostoy.chr("186")),
@@ -158,6 +158,9 @@ var repeat = function (text, num) {
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + "- Fix error input avec un clavier autre que QWERTY (oui c'est possible)            " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- Les entrees claviers comme Alt, VerMaj, etc, ne s'affichent plus dans la console " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- L'usage du CPU a ete reduit                                                      " + dostoy.chr("0,186")),
+                    dostoy.println(dostoy.chr("186,0") + "- La fonction CLS existe vraiment                                                      " + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,",83)) + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====-----------------------====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
                     dostoy.println(dostoy.chr("186,0") + dostoy.chr(repeat("0,", 22)) + "::::====     Version 0.1.1     ====::::" + dostoy.chr(repeat("0,", 22)) + dostoy.chr("0,186")),
@@ -184,6 +187,9 @@ var repeat = function (text, num) {
                     dostoy.println("   " + "changelog     |" + " Voir les nouveautes."),
                     dostoy.println("   " + "cls           |" + " Nettoie l'invite de commande."),
                     dostoy.println("");
+                    break;
+                case "cls": 
+                    dostoy.cls()
                     break;
                 default:
                     dostoy.color(0,4),

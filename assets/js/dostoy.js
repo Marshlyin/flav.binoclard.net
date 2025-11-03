@@ -283,6 +283,7 @@ var dostoy = function () {
                 case 16: // shift
                     break;
                 default:
+                    if (evt.key.length > 1) break; // évite d'afficher les caractères spéciaux ou les inputs comme alt, maj, etc
                     char = evt.key;
                     break;
             }
