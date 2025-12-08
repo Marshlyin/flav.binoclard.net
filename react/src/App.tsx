@@ -6,8 +6,8 @@ import OsWindow from "./components/window/OsWindow";
 function App() {
   return (
     <>
-      <GlobalAppStyle />
       <OsDesktop>
+        <GlobalAppStyle />
         <OsWindow title="pouet" withToolbar>
           Pouet pouet pouet
         </OsWindow>

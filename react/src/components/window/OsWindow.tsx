@@ -45,7 +45,7 @@ const OsWindow: React.FunctionComponent<OsWindowProps> = (props) => {
   return (
     <>
       {isVisible && (
-        <Rnd>
+        <Rnd dragHandleClassName="window-title">
           <Window>
             <WindowHeader className="window-title">
               {title}

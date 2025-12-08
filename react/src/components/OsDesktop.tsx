@@ -1,6 +1,7 @@
 import { type FunctionComponent, type JSX } from "react";
-import original from "react95/dist/themes/original";
 import { ThemeProvider } from "styled-components";
+import themes from "../themes/theme";
+import OsAppBar from "./OsAppBar";
 
 interface OsDesktopProps {
   children: string | JSX.Element | JSX.Element[];
@@ -10,10 +11,14 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
   props: OsDesktopProps
 ) => {
   const { children } = props;
+  const theme = "original";
 
   return (
     <>
-      <ThemeProvider theme={original}>{children}</ThemeProvider>
+      <ThemeProvider theme={themes[theme]}>
+        <OsAppBar />
+        {children}
+      </ThemeProvider>
     </>
   );
 };
