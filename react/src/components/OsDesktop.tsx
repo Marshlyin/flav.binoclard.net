@@ -1,7 +1,7 @@
 import { type FunctionComponent, type JSX } from "react";
 import { ThemeProvider } from "styled-components";
 import themes from "../themes/theme";
-import OsAppBar from "./OsAppBar";
+import OsAppBar from "./taskbar/OsAppBar";
 
 interface OsDesktopProps {
   children: string | JSX.Element | JSX.Element[];

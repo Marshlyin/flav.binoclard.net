@@ -5,9 +5,9 @@ import {
   MenuList,
   MenuListItem,
   Separator,
-  TextInput,
   Toolbar,
 } from "react95";
+import OsClock from "./OsClock";
 
 const OsAppBar: FunctionComponent = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -55,7 +55,9 @@ const OsAppBar: FunctionComponent = () => {
           )}
         </div>
 
-        <TextInput placeholder="Search..." width={150} />
+        <div>
+          <OsClock />
+        </div>
       </Toolbar>
     </AppBar>
   );
