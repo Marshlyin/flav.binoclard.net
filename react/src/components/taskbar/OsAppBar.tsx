@@ -13,25 +13,14 @@ const OsAppBar: FunctionComponent = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <AppBar>
-      <Toolbar style={{ justifyContent: "space-between" }}>
-        <div style={{ position: "relative", display: "inline-block" }}>
-          <Button
-            onClick={() => setOpen(!open)}
-            active={open}
-            style={{ fontWeight: "bold" }}
-          >
+    <AppBar className="taskbar">
+      <Toolbar className="justify-space-between">
+        <div className="relative">
+          <Button onClick={() => setOpen(!open)} active={open} className="bold">
             Start
           </Button>
           {open && (
-            <MenuList
-              style={{
-                position: "absolute",
-                left: "0",
-                top: "100%",
-              }}
-              onClick={() => setOpen(false)}
-            >
+            <MenuList className="menu" onClick={() => setOpen(false)}>
               <MenuListItem>
                 <span role="img" aria-label="👨‍💻">
                   👨‍💻

@@ -10,7 +10,7 @@ const OsClock: FunctionComponent = () => {
     });
   }, []);
 
-  return <div className="mr-10">{time}</div>;
+  return <div className="mr-12">{time}</div>;
 };
 
 export default OsClock;

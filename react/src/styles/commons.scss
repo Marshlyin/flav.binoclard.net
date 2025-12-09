@@ -1,0 +1,38 @@
+@each $i in 4, 8, 12, 16, 20, 24, 28, 32 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$i}px;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$i}px;
+  }
+
+  .ml-#{$i} {
+    margin-left: #{$i}px;
+  }
+}
+
+.absolute {
+  position: absolute !important;
+}
+
+.relative {
+  position: relative;
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-space-around {
+  justify-content: space-around;
+}
