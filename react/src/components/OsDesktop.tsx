@@ -14,12 +14,12 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
   const theme = "original";
 
   return (
-    <>
+    <div className="desktop">
       <ThemeProvider theme={themes[theme]}>
         <OsAppBar />
         {children}
       </ThemeProvider>
-    </>
+    </div>
   );
 };
 
