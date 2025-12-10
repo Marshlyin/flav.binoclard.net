@@ -28,6 +28,12 @@ const OsMenu: FunctionComponent<OsMenuProps> = (props: OsMenuProps) => {
             );
           })}
           <Separator />
+          <MenuListItem>
+            <span role="img" aria-label="❓">
+              ❓
+            </span>
+            Help
+          </MenuListItem>
           <MenuListItem disabled>
             <span role="img" aria-label="🔙">
               🔙
