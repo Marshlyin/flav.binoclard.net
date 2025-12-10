@@ -7,7 +7,7 @@ const OsClock: FunctionComponent = () => {
     setInterval(() => {
       const date = new Date();
       setTime(date.toLocaleString());
-    });
+    }, 1000);
   }, []);
 
   return <div className="mr-12">{time}</div>;

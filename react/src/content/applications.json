@@ -1,0 +1,7 @@
+[
+  { "label": "About", "icon": "👨‍💻" },
+  { "label": "Binoclard", "icon": "🤓" },
+  { "label": "OS", "icon": "🖥️" },
+  { "label": "Changelog", "icon": "📋" },
+  { "label": "Settings", "icon": "⚙️" }
+]

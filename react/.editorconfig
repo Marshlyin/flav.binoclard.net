@@ -1,4 +1,4 @@
 # 2 space indentation
-[*.{ts, tsx}]
+[*.{ts, tsx, json}]
 indent_style = space
 indent_size = 2

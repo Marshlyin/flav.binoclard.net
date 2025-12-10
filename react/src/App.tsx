@@ -1,16 +1,12 @@
-import "./styles/global.scss";
 import GlobalAppStyle from "./components/GlobalAppStyle";
 import OsDesktop from "./components/OsDesktop";
-import OsWindow from "./components/window/OsWindow";
+import "./styles/global.scss";
 
 function App() {
   return (
     <>
       <OsDesktop>
         <GlobalAppStyle />
-        <OsWindow title="pouet" withToolbar>
-          Pouet pouet pouet
-        </OsWindow>
       </OsDesktop>
     </>
   );
