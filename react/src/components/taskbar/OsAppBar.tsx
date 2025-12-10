@@ -1,14 +1,7 @@
-import { useEffect, useState, type FunctionComponent } from "react";
-import {
-  AppBar,
-  Button,
-  MenuList,
-  MenuListItem,
-  Separator,
-  Toolbar,
-} from "react95";
-import OsClock from "./OsClock";
+import { type FunctionComponent } from "react";
+import { AppBar, Toolbar } from "react95";
 import type { Application } from "../../state/applications";
+import OsClock from "./OsClock";
 import OsMenu from "./OsMenu";
 
 interface OsAppBarProps {

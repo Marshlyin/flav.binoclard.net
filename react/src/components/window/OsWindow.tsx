@@ -1,5 +1,5 @@
-import type { JSX } from "react";
-import React, { useState } from "react";
+import type { FunctionComponent, JSX } from "react";
+import { useState } from "react";
 import { Rnd } from "react-rnd";
 import { Button, Toolbar, Window, WindowContent, WindowHeader } from "react95";
 import CloseButton from "./CloseButton";
@@ -27,7 +27,7 @@ interface OsWindowProps {
   children: string | JSX.Element | JSX.Element[];
 }
 
-const OsWindow: React.FunctionComponent<OsWindowProps> = (props) => {
+const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
   const { title, withToolbar = false, customToolbar, children } = props;
   const [isVisible, setVisible] = useState<Boolean>(true);
 
