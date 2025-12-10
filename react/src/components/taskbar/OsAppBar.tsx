@@ -25,13 +25,31 @@ const OsAppBar: FunctionComponent = () => {
                 <span role="img" aria-label="👨‍💻">
                   👨‍💻
                 </span>
-                Profile
+                About
               </MenuListItem>
               <MenuListItem>
-                <span role="img" aria-label="📁">
-                  📁
+                <span role="img" aria-label="🤓" className="mr-8">
+                  🤓
                 </span>
-                My account
+                Binoclard
+              </MenuListItem>
+              <MenuListItem>
+                <span role="img" aria-label="🖥️">
+                  🖥️
+                </span>
+                OS
+              </MenuListItem>
+              <MenuListItem>
+                <span role="img" aria-label="📋">
+                  📋
+                </span>
+                Changelog
+              </MenuListItem>
+              <MenuListItem>
+                <span role="img" aria-label="⚙️">
+                  ⚙️
+                </span>
+                Settings
               </MenuListItem>
               <Separator />
               <MenuListItem disabled>
