@@ -1,11 +1,14 @@
-import { type FunctionComponent, type JSX } from "react";
+import { useState, type FunctionComponent, type JSX } from "react";
 import { ThemeProvider } from "styled-components";
-import type { Application } from "../state/applications";
-import applications from "../state/applications.ts";
+import type { Application, WindowId } from "../state/applications";
+import {
+  applications,
+  defaultOpenedApplication,
+} from "../state/applications.ts";
 import themes from "../themes/theme";
 import OsAppBar from "./taskbar/OsAppBar";
 interface OsDesktopProps {
-  children: string | JSX.Element | JSX.Element[];
+  children?: string | JSX.Element | JSX.Element[];
 }
 
 const OsDesktop: FunctionComponent<OsDesktopProps> = (
@@ -14,19 +17,39 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
   const { children } = props;
   const theme = "original";
 
-  const renderApps = () => {
+  const [openWindowsIds, setOpenWindowsIds] = useState<WindowId[]>(
+    defaultOpenedApplication
+  );
+
+  const openWindow = (id: WindowId) => {
+    setOpenWindowsIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+  };
+
+  const closeWindow = (id: WindowId) => {
+    setOpenWindowsIds((prev) => prev.filter((w) => w !== id));
+  };
+
+  const renderApps = (openWindowsIds: WindowId[]) => {
     const apps: Application[] = applications;
     return apps.map((app) => {
       const Comp = app.component;
-      return <Comp title={`${app.icon} ${app.label}`} />;
+      if (openWindowsIds.includes(app.id)) {
+        return (
+          <Comp
+            key={app.id}
+            title={`${app.icon} ${app.label}`}
+            onClose={() => closeWindow(app.id)}
+          />
+        );
+      }
     });
   };
 
   return (
     <div className="desktop">
       <ThemeProvider theme={themes[theme]}>
-        <OsAppBar applications={applications} />
-        {renderApps()}
+        <OsAppBar applications={applications} openWindow={openWindow} />
+        {renderApps(openWindowsIds)}
         {children}
       </ThemeProvider>
     </div>

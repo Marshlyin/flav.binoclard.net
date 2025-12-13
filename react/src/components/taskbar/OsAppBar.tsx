@@ -6,15 +6,16 @@ import OsMenu from "./OsMenu";
 
 interface OsAppBarProps {
   applications: Application[];
+  openWindow: Function;
 }
 
 const OsAppBar: FunctionComponent<OsAppBarProps> = (props: OsAppBarProps) => {
-  const { applications } = props;
+  const { applications, openWindow } = props;
   return (
     <AppBar className="taskbar">
       <Toolbar className="justify-space-between">
         <div className="relative">
-          <OsMenu applications={applications} />
+          <OsMenu applications={applications} openWindow={openWindow} />
         </div>
 
         <div>

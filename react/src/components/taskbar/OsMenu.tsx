@@ -4,10 +4,11 @@ import { Button, MenuList, MenuListItem, Separator } from "react95";
 
 interface OsMenuProps {
   applications: Application[];
+  openWindow: Function;
 }
 
 const OsMenu: FunctionComponent<OsMenuProps> = (props: OsMenuProps) => {
-  const { applications } = props;
+  const { applications, openWindow } = props;
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -19,7 +20,11 @@ const OsMenu: FunctionComponent<OsMenuProps> = (props: OsMenuProps) => {
         <MenuList className="menu" onClick={() => setOpen(false)}>
           {applications.map((app: Application) => {
             return (
-              <MenuListItem>
+              <MenuListItem
+                onClick={() => {
+                  openWindow(app.id);
+                }}
+              >
                 <span role="img" aria-label={app.icon} className="mr-8">
                   {app.icon}
                 </span>

@@ -1,7 +1,7 @@
-import type { FunctionComponent, JSX } from "react";
-import { useState } from "react";
+import type { FunctionComponent, JSX, MouseEventHandler } from "react";
 import { Rnd } from "react-rnd";
 import { Button, Toolbar, Window, WindowContent, WindowHeader } from "react95";
+import type { WindowId } from "../../state/applications";
 import CloseButton from "./CloseButton";
 
 const defaultToolbar = () => {
@@ -21,15 +21,23 @@ const defaultToolbar = () => {
 };
 
 interface OsWindowProps {
+  key: WindowId;
   title: string;
   withToolbar?: boolean;
   customToolbar?: JSX.Element;
   children: string | JSX.Element | JSX.Element[];
+  onClose: MouseEventHandler;
 }
 
 const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
-  const { title, withToolbar = false, customToolbar, children } = props;
-  const [isVisible, setVisible] = useState<Boolean>(true);
+  const {
+    key,
+    title,
+    withToolbar = false,
+    customToolbar,
+    children,
+    onClose,
+  } = props;
 
   const renderToolbar = () => {
     if (withToolbar) {
@@ -44,22 +52,16 @@ const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
 
   return (
     <>
-      {isVisible && (
-        <Rnd dragHandleClassName="window-title">
-          <Window>
-            <WindowHeader className="window-title">
-              {title}
-              <CloseButton
-                onClick={() => {
-                  setVisible(false);
-                }}
-              />
-            </WindowHeader>
-            {renderToolbar()}
-            <WindowContent>{children}</WindowContent>
-          </Window>
-        </Rnd>
-      )}
+      <Rnd dragHandleClassName="window-title">
+        <Window>
+          <WindowHeader className="window-title">
+            {title}
+            <CloseButton onClick={onClose} />
+          </WindowHeader>
+          {renderToolbar()}
+          <WindowContent>{children}</WindowContent>
+        </Window>
+      </Rnd>
     </>
   );
 };

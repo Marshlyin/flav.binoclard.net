@@ -1,18 +1,20 @@
-import { type FunctionComponent } from "react";
+import { type FunctionComponent, type MouseEventHandler } from "react";
 import OsWindow from "../../components/window/OsWindow";
+import type { WindowId } from "../../state/applications";
 
 interface DefaultApplicationProps {
-  visible: boolean;
+  key: WindowId;
   title: string;
+  onClose: MouseEventHandler;
 }
 
 const DefaultApplication: FunctionComponent<DefaultApplicationProps> = (
   props
 ) => {
-  const { visible, title } = props;
+  const { key, title, onClose } = props;
   return (
     <>
-      <OsWindow title={title} withToolbar={true}>
+      <OsWindow key={key} title={title} onClose={onClose} withToolbar={true}>
         <>
           Nulla elit dolor consectetur minim est sunt sint
           <br />
