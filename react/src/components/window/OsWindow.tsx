@@ -1,7 +1,6 @@
 import type { FunctionComponent, JSX, MouseEventHandler } from "react";
 import { Rnd } from "react-rnd";
 import { Button, Toolbar, Window, WindowContent, WindowHeader } from "react95";
-import type { WindowId } from "../../state/applications";
 import CloseButton from "./CloseButton";
 
 const defaultToolbar = () => {
@@ -21,22 +20,22 @@ const defaultToolbar = () => {
 };
 
 interface OsWindowProps {
-  key: WindowId;
   title: string;
   withToolbar?: boolean;
   customToolbar?: JSX.Element;
   children: string | JSX.Element | JSX.Element[];
   onClose: MouseEventHandler;
+  size?: "small" | "medium" | "large" | "xlarge";
 }
 
 const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
   const {
-    key,
     title,
     withToolbar = false,
     customToolbar,
     children,
     onClose,
+    size = "medium",
   } = props;
 
   const renderToolbar = () => {
@@ -52,14 +51,20 @@ const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
 
   return (
     <>
-      <Rnd dragHandleClassName="window-title">
-        <Window>
+      <Rnd
+        dragHandleClassName="window-title"
+        size={{ width: "100%", height: "auto" }}
+        enableResizing={false}
+      >
+        <Window className={`window-${size}`}>
           <WindowHeader className="window-title">
             {title}
             <CloseButton onClick={onClose} />
           </WindowHeader>
           {renderToolbar()}
-          <WindowContent>{children}</WindowContent>
+          <WindowContent className="d-flex">
+            <div>{children}</div>
+          </WindowContent>
         </Window>
       </Rnd>
     </>

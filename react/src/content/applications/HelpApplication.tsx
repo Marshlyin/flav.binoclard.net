@@ -12,7 +12,13 @@ const HelpApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
   const { key, title, onClose } = props;
   return (
     <>
-      <OsWindow key={key} title={title} onClose={onClose} withToolbar={false}>
+      <OsWindow
+        key={key}
+        title={title}
+        onClose={onClose}
+        withToolbar={false}
+        size="small"
+      >
         <>
           Need help with the OS ? Let us show you around !
           <br />
