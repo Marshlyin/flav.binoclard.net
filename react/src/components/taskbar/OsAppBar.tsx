@@ -1,23 +1,35 @@
 import { type FunctionComponent } from "react";
-import { AppBar, Toolbar } from "react95";
-import type { Application } from "../../state/applications";
+import { AppBar, Button, Handle, Separator, Toolbar } from "react95";
+import type { Application, WindowId } from "../../state/applications";
 import OsClock from "./OsClock";
 import OsMenu from "./OsMenu";
 
 interface OsAppBarProps {
   applications: Application[];
   openWindow: Function;
+  openWindowsIds: WindowId[];
 }
 
 const OsAppBar: FunctionComponent<OsAppBarProps> = (props: OsAppBarProps) => {
-  const { applications, openWindow } = props;
+  const { applications, openWindow, openWindowsIds } = props;
   return (
     <AppBar className="taskbar">
       <Toolbar className="justify-space-between">
-        <div className="relative">
+        <div>
           <OsMenu applications={applications} openWindow={openWindow} />
-        </div>
+          <Handle size={15} className="ml-8 mr-8" />
+          {openWindowsIds.map((id) => {
+            const currentApp = applications.find((app) => {
+              return app.id === id;
+            });
 
+            return (
+              <Button active className="mr-4">
+                {`${currentApp?.icon} ${currentApp?.label}`}
+              </Button>
+            );
+          })}
+        </div>
         <div>
           <OsClock />
         </div>

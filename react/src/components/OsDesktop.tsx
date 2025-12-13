@@ -48,7 +48,11 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
   return (
     <div className="desktop">
       <ThemeProvider theme={themes[theme]}>
-        <OsAppBar applications={applications} openWindow={openWindow} />
+        <OsAppBar
+          applications={applications}
+          openWindow={openWindow}
+          openWindowsIds={openWindowsIds}
+        />
         {renderApps(openWindowsIds)}
         {children}
       </ThemeProvider>
