@@ -1,5 +1,6 @@
 import type { FunctionComponent } from "react";
 import DefaultApplication from "../content/applications/DefaultApplication";
+import HelpApplication from "../content/applications/HelpApplication";
 
 export interface Application {
   id: WindowId;
@@ -68,7 +69,7 @@ export const applications: Application[] = [
     id: "OS_HELP",
     label: "Help",
     icon: "🛟",
-    component: DefaultApplication,
+    component: HelpApplication,
     menu_category: "Secondary",
     disabled: false,
   },
