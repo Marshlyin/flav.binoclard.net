@@ -19,32 +19,38 @@ const OsMenu: FunctionComponent<OsMenuProps> = (props: OsMenuProps) => {
       {open && (
         <MenuList className="menu" onClick={() => setOpen(false)}>
           {applications.map((app: Application) => {
-            return (
-              <MenuListItem
-                onClick={() => {
-                  openWindow(app.id);
-                }}
-              >
-                <span role="img" aria-label={app.icon} className="mr-8">
-                  {app.icon}
-                </span>
-                {app.label}
-              </MenuListItem>
-            );
+            if (app.menu_category === "Main")
+              return (
+                <MenuListItem
+                  disabled={app.disabled}
+                  onClick={() => {
+                    openWindow(app.id);
+                  }}
+                >
+                  <span role="img" aria-label={app.icon} className="mr-8">
+                    {app.icon}
+                  </span>
+                  {app.label}
+                </MenuListItem>
+              );
           })}
           <Separator />
-          <MenuListItem>
-            <span role="img" aria-label="❓">
-              ❓
-            </span>
-            Help
-          </MenuListItem>
-          <MenuListItem disabled>
-            <span role="img" aria-label="🔙">
-              🔙
-            </span>
-            Logout
-          </MenuListItem>
+          {applications.map((app: Application) => {
+            if (app.menu_category === "Secondary")
+              return (
+                <MenuListItem
+                  disabled={app.disabled}
+                  onClick={() => {
+                    openWindow(app.id);
+                  }}
+                >
+                  <span role="img" aria-label={app.icon} className="mr-8">
+                    {app.icon}
+                  </span>
+                  {app.label}
+                </MenuListItem>
+              );
+          })}
         </MenuList>
       )}
     </>
