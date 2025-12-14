@@ -1,5 +1,5 @@
 import { type FunctionComponent } from "react";
-import { AppBar, Button, Handle, Separator, Toolbar } from "react95";
+import { AppBar, Button, Handle, Toolbar } from "react95";
 import type { Application, WindowId } from "../../state/applications";
 import OsClock from "./OsClock";
 import OsMenu from "./OsMenu";
