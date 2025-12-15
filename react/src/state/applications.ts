@@ -1,6 +1,7 @@
 import type { FunctionComponent } from "react";
 import DefaultApplication from "../content/applications/DefaultApplication";
 import HelpApplication from "../content/applications/HelpApplication";
+import SettingsApplication from "../content/applications/SettingsApplication";
 
 export interface Application {
   id: WindowId;
@@ -28,7 +29,7 @@ export const applications: Application[] = [
   {
     id: "OS_ABOUT",
     label: "About",
-    icon: "👨‍💻",
+    icon: "👨🏼‍💻",
     component: DefaultApplication,
     menu_category: "Main",
     disabled: false,
@@ -58,18 +59,18 @@ export const applications: Application[] = [
     disabled: false,
   },
   {
-    id: "OS_SETTINGS",
-    label: "Settings",
-    icon: "⚙️",
-    component: DefaultApplication,
-    menu_category: "Main",
-    disabled: false,
-  },
-  {
     id: "OS_HELP",
     label: "Help",
     icon: "🛟",
     component: HelpApplication,
+    menu_category: "Secondary",
+    disabled: false,
+  },
+  {
+    id: "OS_SETTINGS",
+    label: "Settings",
+    icon: "⚙️",
+    component: SettingsApplication,
     menu_category: "Secondary",
     disabled: false,
   },

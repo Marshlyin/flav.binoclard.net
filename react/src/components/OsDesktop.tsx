@@ -1,11 +1,11 @@
-import { useState, type FunctionComponent, type JSX } from "react";
-import { ThemeProvider } from "styled-components";
+import { useEffect, useState, type FunctionComponent, type JSX } from "react";
+import { ThemeProvider, type DefaultTheme } from "styled-components";
 import type { Application, WindowId } from "../state/applications";
 import {
   applications,
   defaultOpenedApplication,
 } from "../state/applications.ts";
-import themes from "../themes/theme";
+import themes, { type ThemeName } from "../themes/theme";
 import OsAppBar from "./taskbar/OsAppBar";
 interface OsDesktopProps {
   children?: string | JSX.Element | JSX.Element[];
@@ -15,7 +15,7 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
   props: OsDesktopProps
 ) => {
   const { children } = props;
-  const theme = "original";
+  const [theme, setTheme] = useState<ThemeName>("original");
 
   const [openWindowsIds, setOpenWindowsIds] = useState<WindowId[]>(
     defaultOpenedApplication
@@ -39,6 +39,8 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
             key={app.id}
             title={`${app.icon} ${app.label}`}
             onClose={() => closeWindow(app.id)}
+            theme={theme}
+            onSelectTheme={setTheme}
           />
         );
       }
