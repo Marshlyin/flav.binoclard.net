@@ -11,11 +11,14 @@ import type { WindowId } from "../../state/applications";
 import type { BackgroundsName } from "../../themes/backgrounds";
 import backgrounds from "../../themes/backgrounds";
 import themes, { type ThemeName } from "../../themes/theme";
+import { mapObjetKeysToSelectOption } from "../../utils/utils";
 
 interface DefaultApplicationProps {
   key: WindowId;
   title: string;
   onClose: MouseEventHandler;
+  isFocused?: boolean;
+  setFocused: MouseEventHandler;
   theme: ThemeName;
   onSelectTheme: React.Dispatch<React.SetStateAction<ThemeName>>;
 }
@@ -23,27 +26,20 @@ interface DefaultApplicationProps {
 const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
   props
 ) => {
-  const { key, title, onClose, theme, onSelectTheme } = props;
+  const { key, title, onClose, isFocused, setFocused, theme, onSelectTheme } =
+    props;
 
   const [bg, setBg] = useState<BackgroundsName>("defaut");
 
-  const themeOptions: SelectOption<ThemeName>[] = (
-    Object.keys(themes) as ThemeName[]
-  ).map((key) => ({
-    value: key,
-    label: key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase()),
-  }));
+  const themeOptions: SelectOption<ThemeName>[] =
+    mapObjetKeysToSelectOption(themes);
 
   const onChangeTheme = <T,>(selectedOption: SelectOption<T>) => {
     onSelectTheme(selectedOption.value as ThemeName);
   };
 
-  const backgroundOptions: SelectOption<BackgroundsName>[] = (
-    Object.keys(backgrounds) as BackgroundsName[]
-  ).map((key) => ({
-    value: key,
-    label: key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase()),
-  }));
+  const backgroundOptions: SelectOption<BackgroundsName>[] =
+    mapObjetKeysToSelectOption(backgrounds);
 
   const onChangeBackground = <T,>(selectedOption: SelectOption<T>) => {
     setBg(selectedOption.value as BackgroundsName);
@@ -64,6 +60,8 @@ const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
         onClose={onClose}
         withToolbar={false}
         size="small"
+        isFocused={isFocused}
+        setFocused={setFocused}
       >
         <div className="mb-16">
           <GroupBox label="Fond d'ecran">

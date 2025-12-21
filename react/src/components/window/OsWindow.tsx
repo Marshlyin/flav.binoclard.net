@@ -1,4 +1,10 @@
-import type { FunctionComponent, JSX, MouseEventHandler } from "react";
+import {
+  useEffect,
+  useState,
+  type FunctionComponent,
+  type JSX,
+  type MouseEventHandler,
+} from "react";
 import { Rnd } from "react-rnd";
 import { Button, Toolbar, Window, WindowContent, WindowHeader } from "react95";
 import CloseButton from "./CloseButton";
@@ -26,6 +32,8 @@ interface OsWindowProps {
   children: string | JSX.Element | JSX.Element[];
   onClose: MouseEventHandler;
   size?: "small" | "medium" | "large" | "xlarge";
+  isFocused?: boolean;
+  setFocused: MouseEventHandler;
 }
 
 const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
@@ -36,7 +44,13 @@ const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
     children,
     onClose,
     size = "medium",
+    isFocused,
+    setFocused,
   } = props;
+
+  useEffect(() => {
+    console.log(title, isFocused);
+  }, [isFocused]);
 
   const renderToolbar = () => {
     if (withToolbar) {
@@ -53,11 +67,12 @@ const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
     <>
       <Rnd
         dragHandleClassName="window-title"
-        size={{ width: "100%", height: "auto" }}
+        size={{ width: "auto", height: "auto" }}
         enableResizing={false}
+        className={`${isFocused ? "focused" : "unfocused"}`}
       >
-        <Window className={`window-${size}`}>
-          <WindowHeader className="window-title">
+        <Window className={`window-${size}`} onMouseDown={setFocused}>
+          <WindowHeader className="window-title" active={isFocused}>
             {title}
             <CloseButton onClick={onClose} />
           </WindowHeader>

@@ -1,4 +1,4 @@
-import { useState, type FunctionComponent, type JSX } from "react";
+import { useEffect, useState, type FunctionComponent, type JSX } from "react";
 import { ThemeProvider } from "styled-components";
 import type { Application, WindowId } from "../state/applications";
 import {
@@ -21,12 +21,21 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
     defaultOpenedApplication
   );
 
+  const [focusedWindowsId, setFocusedWindowsId] = useState<WindowId>(
+    defaultOpenedApplication[0]
+  );
+
   const openWindow = (id: WindowId) => {
     setOpenWindowsIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    setFocusedWindowsId(id);
   };
 
   const closeWindow = (id: WindowId) => {
     setOpenWindowsIds((prev) => prev.filter((w) => w !== id));
+  };
+
+  const focusWindow = (id: WindowId) => {
+    setFocusedWindowsId(id);
   };
 
   const renderApps = (openWindowsIds: WindowId[]) => {
@@ -41,6 +50,10 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
             onClose={() => closeWindow(app.id)}
             theme={theme}
             onSelectTheme={setTheme}
+            isFocused={app.id === focusedWindowsId}
+            setFocused={() => {
+              setFocusedWindowsId(app.id);
+            }}
           />
         );
       }
@@ -54,6 +67,8 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
           applications={applications}
           openWindow={openWindow}
           openWindowsIds={openWindowsIds}
+          focusedWindowId={focusedWindowsId}
+          onClick={focusWindow}
         />
         {renderApps(openWindowsIds)}
         {children}

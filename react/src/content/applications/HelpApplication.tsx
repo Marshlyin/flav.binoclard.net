@@ -7,10 +7,12 @@ interface DefaultApplicationProps {
   key: WindowId;
   title: string;
   onClose: MouseEventHandler;
+  isFocused?: boolean;
+  setFocused: MouseEventHandler;
 }
 
 const HelpApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
-  const { key, title, onClose } = props;
+  const { key, title, onClose, isFocused, setFocused } = props;
   return (
     <>
       <OsWindow
@@ -19,6 +21,8 @@ const HelpApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
         onClose={onClose}
         withToolbar={false}
         size="small"
+        isFocused={isFocused}
+        setFocused={setFocused}
       >
         <div className="mb-16">
           <p>Besoin d'aide avec FlavOS ? Laissez nous vous guider !</p>

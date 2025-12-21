@@ -8,10 +8,13 @@ interface OsAppBarProps {
   applications: Application[];
   openWindow: Function;
   openWindowsIds: WindowId[];
+  focusedWindowId: WindowId;
+  onClick: Function;
 }
 
 const OsAppBar: FunctionComponent<OsAppBarProps> = (props: OsAppBarProps) => {
-  const { applications, openWindow, openWindowsIds } = props;
+  const { applications, openWindow, openWindowsIds, focusedWindowId, onClick } =
+    props;
   return (
     <AppBar className="taskbar">
       <Toolbar className="justify-space-between">
@@ -24,7 +27,13 @@ const OsAppBar: FunctionComponent<OsAppBarProps> = (props: OsAppBarProps) => {
             });
 
             return (
-              <Button active className="mr-4">
+              <Button
+                active={currentApp?.id === focusedWindowId}
+                className="mr-4"
+                onClick={() => {
+                  onClick(currentApp?.id);
+                }}
+              >
                 {`${currentApp?.icon} ${currentApp?.label}`}
               </Button>
             );

@@ -65,3 +65,11 @@
   max-width: 100%;
   width: 100%;
 }
+
+.focused {
+  z-index: 99 !important;
+}
+
+.unfocused {
+  z-index: 1 !important;
+}

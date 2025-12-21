@@ -6,15 +6,24 @@ interface DefaultApplicationProps {
   key: WindowId;
   title: string;
   onClose: MouseEventHandler;
+  isFocused?: boolean;
+  setFocused: MouseEventHandler;
 }
 
 const DefaultApplication: FunctionComponent<DefaultApplicationProps> = (
   props
 ) => {
-  const { key, title, onClose } = props;
+  const { key, title, onClose, isFocused, setFocused } = props;
   return (
     <>
-      <OsWindow key={key} title={title} onClose={onClose} withToolbar={true}>
+      <OsWindow
+        key={key}
+        title={title}
+        onClose={onClose}
+        withToolbar={true}
+        isFocused={isFocused}
+        setFocused={setFocused}
+      >
         <>
           Nulla elit dolor consectetur minim est sunt sint
           <br />
