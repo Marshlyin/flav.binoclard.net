@@ -1,5 +1,5 @@
-import { useEffect, useState, type FunctionComponent, type JSX } from "react";
-import { ThemeProvider, type DefaultTheme } from "styled-components";
+import { useState, type FunctionComponent, type JSX } from "react";
+import { ThemeProvider } from "styled-components";
 import type { Application, WindowId } from "../state/applications";
 import {
   applications,
