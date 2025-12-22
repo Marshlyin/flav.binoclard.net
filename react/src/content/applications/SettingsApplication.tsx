@@ -1,9 +1,4 @@
-import {
-  useEffect,
-  useState,
-  type FunctionComponent,
-  type MouseEventHandler,
-} from "react";
+import { type FunctionComponent, type MouseEventHandler } from "react";
 import { Button, GroupBox, Monitor, Select } from "react95";
 import type { SelectOption } from "react95/dist/Select/Select.types";
 import OsWindow from "../../components/window/OsWindow";
