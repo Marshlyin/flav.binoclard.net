@@ -8,7 +8,7 @@ interface OsAppBarProps {
   applications: Application[];
   openWindow: Function;
   openWindowsIds: WindowId[];
-  focusedWindowId: WindowId;
+  focusedWindowId?: WindowId;
   onClick: Function;
 }
 
@@ -31,7 +31,9 @@ const OsAppBar: FunctionComponent<OsAppBarProps> = (props: OsAppBarProps) => {
                 active={currentApp?.id === focusedWindowId}
                 className="mr-4"
                 onClick={() => {
-                  onClick(currentApp?.id);
+                  currentApp?.id === focusedWindowId
+                    ? onClick(undefined)
+                    : onClick(currentApp?.id);
                 }}
               >
                 {`${currentApp?.icon} ${currentApp?.label}`}

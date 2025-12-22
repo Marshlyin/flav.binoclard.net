@@ -34,9 +34,9 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
     defaultOpenedApplication
   );
 
-  const [focusedWindowsId, setFocusedWindowsId] = useState<WindowId>(
-    defaultOpenedApplication[0]
-  );
+  const [focusedWindowsId, setFocusedWindowsId] = useState<
+    WindowId | undefined
+  >(defaultOpenedApplication[0]);
 
   const openWindow = (id: WindowId) => {
     setOpenWindowsIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
@@ -47,7 +47,7 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
     setOpenWindowsIds((prev) => prev.filter((w) => w !== id));
   };
 
-  const focusWindow = (id: WindowId) => {
+  const focusWindow = (id?: WindowId) => {
     setFocusedWindowsId(id);
   };
 
