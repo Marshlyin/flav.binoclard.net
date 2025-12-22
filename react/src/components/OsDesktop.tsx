@@ -7,6 +7,8 @@ import {
 } from "../state/applications.ts";
 import themes, { type ThemeName } from "../themes/theme";
 import OsAppBar from "./taskbar/OsAppBar";
+import type { BackgroundsName } from "../themes/backgrounds.ts";
+import backgrounds from "../themes/backgrounds.ts";
 interface OsDesktopProps {
   children?: string | JSX.Element | JSX.Element[];
 }
@@ -16,6 +18,17 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
 ) => {
   const { children } = props;
   const [theme, setTheme] = useState<ThemeName>("original");
+  const [background, setBackground] = useState<BackgroundsName>("defaut");
+
+  // Gestion du fond d´ecran
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--app-background",
+      backgrounds[background]
+    );
+  }, [background]);
+
+  // Gestion des fenetres
 
   const [openWindowsIds, setOpenWindowsIds] = useState<WindowId[]>(
     defaultOpenedApplication
@@ -38,6 +51,7 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
     setFocusedWindowsId(id);
   };
 
+  // Gestion des applications
   const renderApps = (openWindowsIds: WindowId[]) => {
     const apps: Application[] = applications;
     return apps.map((app) => {
@@ -50,6 +64,8 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
             onClose={() => closeWindow(app.id)}
             theme={theme}
             onSelectTheme={setTheme}
+            background={background}
+            onSelectBackground={setBackground}
             isFocused={app.id === focusedWindowsId}
             setFocused={() => {
               setFocusedWindowsId(app.id);

@@ -1,6 +1,4 @@
 import {
-  useEffect,
-  useState,
   type FunctionComponent,
   type JSX,
   type MouseEventHandler,

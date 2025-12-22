@@ -21,15 +21,24 @@ interface DefaultApplicationProps {
   setFocused: MouseEventHandler;
   theme: ThemeName;
   onSelectTheme: React.Dispatch<React.SetStateAction<ThemeName>>;
+  background: BackgroundsName;
+  onSelectBackground: React.Dispatch<React.SetStateAction<BackgroundsName>>;
 }
 
 const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
   props
 ) => {
-  const { key, title, onClose, isFocused, setFocused, theme, onSelectTheme } =
-    props;
-
-  const [bg, setBg] = useState<BackgroundsName>("defaut");
+  const {
+    key,
+    title,
+    onClose,
+    isFocused,
+    setFocused,
+    theme,
+    onSelectTheme,
+    background,
+    onSelectBackground,
+  } = props;
 
   const themeOptions: SelectOption<ThemeName>[] =
     mapObjetKeysToSelectOption(themes);
@@ -42,15 +51,8 @@ const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
     mapObjetKeysToSelectOption(backgrounds);
 
   const onChangeBackground = <T,>(selectedOption: SelectOption<T>) => {
-    setBg(selectedOption.value as BackgroundsName);
+    onSelectBackground(selectedOption.value as BackgroundsName);
   };
-
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--app-background",
-      backgrounds[bg]
-    );
-  }, [bg]);
 
   return (
     <>
@@ -65,10 +67,12 @@ const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
       >
         <div className="mb-16">
           <GroupBox label="Fond d'ecran">
-            <Monitor backgroundStyles={{ background: backgrounds[bg] }} />
+            <Monitor
+              backgroundStyles={{ background: backgrounds[background] }}
+            />
             <div className="mt-16">
               <Select
-                defaultValue={bg}
+                defaultValue={background}
                 options={backgroundOptions}
                 menuMaxHeight={160}
                 width={160}
