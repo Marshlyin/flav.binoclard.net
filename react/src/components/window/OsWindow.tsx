@@ -6,6 +6,7 @@ import {
 import { Rnd } from "react-rnd";
 import { Button, Toolbar, Window, WindowContent, WindowHeader } from "react95";
 import CloseButton from "./CloseButton";
+import type { Position } from "../../state/position";
 
 const defaultToolbar = () => {
   return (
@@ -25,6 +26,7 @@ const defaultToolbar = () => {
 
 interface OsWindowProps {
   title: string;
+  position: Position;
   withToolbar?: boolean;
   customToolbar?: JSX.Element;
   children: string | JSX.Element | JSX.Element[];
@@ -37,6 +39,7 @@ interface OsWindowProps {
 const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
   const {
     title,
+    position,
     withToolbar = false,
     customToolbar,
     children,
@@ -60,8 +63,13 @@ const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
   return (
     <>
       <Rnd
+        default={{
+          x: position.x,
+          y: position.y,
+          width: "auto",
+          height: "auto",
+        }}
         dragHandleClassName="window-title"
-        size={{ width: "auto", height: "auto" }}
         enableResizing={false}
         className={`${isFocused ? "focused" : "unfocused"}`}
       >

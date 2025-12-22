@@ -9,6 +9,7 @@ import themes, { type ThemeName } from "../themes/theme";
 import OsAppBar from "./taskbar/OsAppBar";
 import type { BackgroundsName } from "../themes/backgrounds.ts";
 import backgrounds from "../themes/backgrounds.ts";
+import type { Position } from "../state/position.ts";
 interface OsDesktopProps {
   children?: string | JSX.Element | JSX.Element[];
 }
@@ -56,11 +57,13 @@ const OsDesktop: FunctionComponent<OsDesktopProps> = (
     const apps: Application[] = applications;
     return apps.map((app) => {
       const Comp = app.component;
+      const position = 100 + 20 * (openWindowsIds.length - 1);
       if (openWindowsIds.includes(app.id)) {
         return (
           <Comp
             key={app.id}
             title={`${app.icon} ${app.label}`}
+            position={{ x: position, y: position }}
             onClose={() => closeWindow(app.id)}
             theme={theme}
             onSelectTheme={setTheme}

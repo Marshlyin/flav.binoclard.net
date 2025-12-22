@@ -1,9 +1,11 @@
 import { type FunctionComponent, type MouseEventHandler } from "react";
 import OsWindow from "../../components/window/OsWindow";
 import type { WindowId } from "../../state/applications";
+import type { Position } from "../../state/position";
 
 interface DefaultApplicationProps {
   key: WindowId;
+  position: Position;
   title: string;
   onClose: MouseEventHandler;
   isFocused?: boolean;
@@ -13,12 +15,13 @@ interface DefaultApplicationProps {
 const DefaultApplication: FunctionComponent<DefaultApplicationProps> = (
   props
 ) => {
-  const { key, title, onClose, isFocused, setFocused } = props;
+  const { key, position, title, onClose, isFocused, setFocused } = props;
   return (
     <>
       <OsWindow
         key={key}
         title={title}
+        position={position}
         onClose={onClose}
         withToolbar={true}
         isFocused={isFocused}

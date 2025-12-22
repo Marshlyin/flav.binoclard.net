@@ -7,9 +7,11 @@ import type { BackgroundsName } from "../../themes/backgrounds";
 import backgrounds from "../../themes/backgrounds";
 import themes, { type ThemeName } from "../../themes/theme";
 import { mapObjetKeysToSelectOption } from "../../utils/utils";
+import type { Position } from "../../state/position";
 
 interface DefaultApplicationProps {
   key: WindowId;
+  position: Position;
   title: string;
   onClose: MouseEventHandler;
   isFocused?: boolean;
@@ -25,6 +27,7 @@ const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
 ) => {
   const {
     key,
+    position,
     title,
     onClose,
     isFocused,
@@ -54,6 +57,7 @@ const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
       <OsWindow
         key={key}
         title={title}
+        position={position}
         onClose={onClose}
         withToolbar={false}
         size="medium"
