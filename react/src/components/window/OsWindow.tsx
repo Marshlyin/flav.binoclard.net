@@ -48,10 +48,6 @@ const OsWindow: FunctionComponent<OsWindowProps> = (props) => {
     setFocused,
   } = props;
 
-  useEffect(() => {
-    console.log(title, isFocused);
-  }, [isFocused]);
-
   const renderToolbar = () => {
     if (withToolbar) {
       if (customToolbar) {

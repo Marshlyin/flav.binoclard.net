@@ -23,6 +23,7 @@ const DefaultApplication: FunctionComponent<DefaultApplicationProps> = (
         withToolbar={true}
         isFocused={isFocused}
         setFocused={setFocused}
+        size="medium"
       >
         <>
           Nulla elit dolor consectetur minim est sunt sint

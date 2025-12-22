@@ -59,7 +59,7 @@ const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
         title={title}
         onClose={onClose}
         withToolbar={false}
-        size="small"
+        size="medium"
         isFocused={isFocused}
         setFocused={setFocused}
       >

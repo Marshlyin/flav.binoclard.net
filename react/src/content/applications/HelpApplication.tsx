@@ -20,7 +20,7 @@ const HelpApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
         title={title}
         onClose={onClose}
         withToolbar={false}
-        size="small"
+        size="large"
         isFocused={isFocused}
         setFocused={setFocused}
       >
