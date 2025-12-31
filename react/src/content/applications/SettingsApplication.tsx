@@ -1,28 +1,21 @@
-import { type FunctionComponent, type MouseEventHandler } from "react";
+import { type FunctionComponent } from "react";
 import { Button, GroupBox, Monitor, Select } from "react95";
 import type { SelectOption } from "react95/dist/Select/Select.types";
 import OsWindow from "../../components/window/OsWindow";
-import type { WindowId } from "../../state/applications";
+import type { DefaultApplicationProps } from "../../state/applications";
 import type { BackgroundsName } from "../../themes/backgrounds";
 import backgrounds from "../../themes/backgrounds";
 import themes, { type ThemeName } from "../../themes/theme";
 import { mapObjetKeysToSelectOption } from "../../utils/utils";
-import type { Position } from "../../state/position";
 
-interface DefaultApplicationProps {
-  key: WindowId;
-  position: Position;
-  title: string;
-  onClose: MouseEventHandler;
-  isFocused?: boolean;
-  setFocused: MouseEventHandler;
+interface SettingsApplicationProps extends DefaultApplicationProps {
   theme: ThemeName;
   onSelectTheme: React.Dispatch<React.SetStateAction<ThemeName>>;
   background: BackgroundsName;
   onSelectBackground: React.Dispatch<React.SetStateAction<BackgroundsName>>;
 }
 
-const SettingsApplication: FunctionComponent<DefaultApplicationProps> = (
+const SettingsApplication: FunctionComponent<SettingsApplicationProps> = (
   props
 ) => {
   const {

@@ -1,17 +1,7 @@
-import { type FunctionComponent, type MouseEventHandler } from "react";
-import OsWindow from "../../components/window/OsWindow";
-import type { WindowId } from "../../state/applications";
+import { type FunctionComponent } from "react";
 import { Button } from "react95";
-import type { Position } from "../../state/position";
-
-interface DefaultApplicationProps {
-  key: WindowId;
-  position: Position;
-  title: string;
-  onClose: MouseEventHandler;
-  isFocused?: boolean;
-  setFocused: MouseEventHandler;
-}
+import OsWindow from "../../components/window/OsWindow";
+import type { DefaultApplicationProps } from "../../state/applications";
 
 const HelpApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
   const { key, title, position, onClose, isFocused, setFocused } = props;

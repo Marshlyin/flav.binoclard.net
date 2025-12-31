@@ -1,7 +1,10 @@
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, MouseEventHandler } from "react";
 import DefaultApplication from "../content/applications/DefaultApplication";
 import HelpApplication from "../content/applications/HelpApplication";
 import SettingsApplication from "../content/applications/SettingsApplication";
+import AboutApplication from "../content/applications/AboutApplication";
+import OSApplication from "../content/applications/OSApplication";
+import type { Position } from "react-rnd";
 
 export interface Application {
   id: WindowId;
@@ -10,6 +13,15 @@ export interface Application {
   component: FunctionComponent<any>;
   menu_category: MenuCategory;
   disabled: boolean;
+}
+
+export interface DefaultApplicationProps {
+  key: WindowId;
+  position: Position;
+  title: string;
+  onClose: MouseEventHandler;
+  isFocused?: boolean;
+  setFocused: MouseEventHandler;
 }
 
 export type MenuCategory = "Main" | "Secondary";
@@ -30,7 +42,7 @@ export const applications: Application[] = [
     id: "OS_ABOUT",
     label: "About",
     icon: "👨🏼‍💻",
-    component: DefaultApplication,
+    component: AboutApplication,
     menu_category: "Main",
     disabled: false,
   },
@@ -46,7 +58,7 @@ export const applications: Application[] = [
     id: "OS_OS",
     label: "OS",
     icon: "🖥️",
-    component: DefaultApplication,
+    component: OSApplication,
     menu_category: "Main",
     disabled: false,
   },
