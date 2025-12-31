@@ -1,5 +1,14 @@
 import { useEffect, useState, type FunctionComponent } from "react";
-import { Button, GroupBox, ScrollView, Tab, TabBody, Tabs } from "react95";
+import {
+  Button,
+  GroupBox,
+  ScrollView,
+  Tab,
+  TabBody,
+  Tabs,
+  TreeView,
+  type TreeLeaf,
+} from "react95";
 import OsWindow from "../../components/window/OsWindow";
 import type { DefaultApplicationProps } from "../../state/applications";
 import { Document, Page } from "react-pdf";
@@ -29,10 +38,6 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
     headerBackground: string;
   };
 
-  useEffect(() => {
-    console.log(theme);
-  }, [theme]);
-
   const handleTabChange = (value: number) => {
     setActiveTab(value);
   };
@@ -44,6 +49,123 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
   const handleClickZoomPlus = () => {
     if (scale + 0.1 <= 2.0) setScale(scale + 0.1);
   };
+
+  const strackTree: TreeLeaf<string>[] = [
+    {
+      icon: "",
+      id: "front",
+      label: "Frontend",
+      items: [
+        {
+          icon: "⚛️",
+          id: "react",
+          label: "React / Typescript",
+        },
+        {
+          icon: "🛡️",
+          id: "angular",
+          label: "Angular",
+        },
+      ],
+    },
+    {
+      icon: "",
+      id: "back",
+      label: "Backend",
+      items: [
+        {
+          icon: "🐍",
+          id: "fastapi",
+          label: "FastAPI",
+        },
+        {
+          icon: "🌱",
+          id: "spring",
+          label: "Spring",
+        },
+        {
+          icon: "💾",
+          id: "databases",
+          label: "Bases de donnees",
+          items: [
+            {
+              icon: "",
+              id: "sql",
+              label: "SQL",
+              items: [
+                {
+                  icon: "🐬",
+                  id: "mysql",
+                  label: "MySQL",
+                },
+                {
+                  icon: "🐘",
+                  id: "postgres",
+                  label: "PostgreSQL",
+                },
+              ],
+            },
+            {
+              icon: "",
+              id: "nosql",
+              label: "noSQL",
+              items: [
+                {
+                  icon: "🔋",
+                  id: "dynamoDB",
+                  label: "DynamoDB",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      icon: "🏢",
+      id: "host",
+      label: "Hebergement / infra",
+      items: [
+        {
+          icon: "👨‍🦲",
+          id: "aws",
+          label: "AWS",
+        },
+        {
+          icon: "🌍",
+          id: "terraform",
+          label: "Terraform",
+        },
+        {
+          icon: "🤵",
+          id: "jenkins",
+          label: "Jenkins",
+        },
+        {
+          icon: "🌐",
+          id: "vps",
+          label: "Administration VPS",
+        },
+      ],
+    },
+    {
+      icon: "🎮",
+      id: "others",
+      label: "Autres",
+      items: [
+        {
+          icon: "🌴",
+          id: "lua",
+          label: "FiveM (LUA)",
+        },
+        {
+          icon: "🤖",
+          id: "godot",
+          label: "GODOT (game engine)",
+        },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -71,12 +193,12 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
               <>
                 <div>
                   <p>
-                    Developpeur web fullstack en semaine et binoclard à toute
+                    Developpeur web fullstack en semaine et binoclard a toute
                     heure, Flav est le createur de FlavOS.
                   </p>
                   <p>
                     Flav est disponible par e-mail et par discord, si vous avez
-                    besoin de le contacter à propos de FlavOS ou pour des
+                    besoin de le contacter a propos de FlavOS ou pour des
                     raisons professionnelles.
                   </p>
                 </div>
@@ -85,17 +207,22 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
             {activeTab === 1 && (
               // Stack
               <>
-                <div>
-                  <p>
-                    Developpeur web fullstack en semaine et binoclard à toute
-                    heure, Flav est le createur de FlavOS.
-                  </p>
-                  <p>
-                    Flav est disponible par e-mail et par discord, si vous avez
-                    besoin de le contacter à propos de FlavOS ou pour des
-                    raisons professionnelles.
-                  </p>
-                </div>
+                <GroupBox label="Technologies">
+                  <ScrollView className="tree-container">
+                    <TreeView
+                      defaultExpanded={["front", "back", "host"]}
+                      tree={strackTree}
+                    />
+                  </ScrollView>
+                  <div>
+                    <p>
+                      Participation egalement a plusieurs projets
+                      communautaires, dont notamment la communaute{" "}
+                      <a href="https://www.binoclard.net/">Binoclard</a> et le
+                      serveur GTA RP de la communaute de Ponce.
+                    </p>
+                  </div>
+                </GroupBox>
               </>
             )}
             {activeTab === 2 && (
@@ -103,12 +230,12 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
               <>
                 <div>
                   <p>
-                    Developpeur web fullstack en semaine et binoclard à toute
+                    Developpeur web fullstack en semaine et binoclard a toute
                     heure, Flav est le createur de FlavOS.
                   </p>
                   <p>
                     Flav est disponible par e-mail et par discord, si vous avez
-                    besoin de le contacter à propos de FlavOS ou pour des
+                    besoin de le contacter a propos de FlavOS ou pour des
                     raisons professionnelles.
                   </p>
                 </div>
@@ -166,8 +293,8 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
                   <span>{Math.floor(scale * 100)}%</span>
                 </div>
                 <div className="align-right">
-                  <Button onClick={handleClickZoomMoins}>Zoom -</Button> /{" "}
-                  <Button onClick={handleClickZoomPlus}>Zoom +</Button>
+                  <Button onClick={handleClickZoomMoins}>🔍 - </Button>{" "}
+                  <Button onClick={handleClickZoomPlus}>🔍 +</Button>
                 </div>
               </>
             )}

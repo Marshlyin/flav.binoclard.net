@@ -28,7 +28,7 @@ const HelpApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
             collectif Binoclard et bien d'autres choses !{" "}
           </p>
           <p>
-            Vous pourrez egalement modifier les themes pour mettre FlavOS à
+            Vous pourrez egalement modifier les themes pour mettre FlavOS a
             votre gout !
           </p>
         </div>
