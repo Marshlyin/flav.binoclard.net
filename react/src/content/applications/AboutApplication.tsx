@@ -1,4 +1,8 @@
-import { useEffect, useState, type FunctionComponent } from "react";
+import { useState, type FunctionComponent } from "react";
+import { GitHubCalendar } from "react-github-calendar";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 import {
   Button,
   GroupBox,
@@ -9,15 +13,10 @@ import {
   TreeView,
   type TreeLeaf,
 } from "react95";
+import { useTheme, type DefaultTheme } from "styled-components";
 import OsWindow from "../../components/window/OsWindow";
 import type { DefaultApplicationProps } from "../../state/applications";
-import { Document, Page } from "react-pdf";
-import { pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
-import { GitHubCalendar } from "react-github-calendar";
 import { gradientToWhite } from "../../utils/utils";
-import { useTheme, type DefaultTheme } from "styled-components";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -182,8 +181,8 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
         <div className="mb-16">
           <Tabs value={activeTab} onChange={handleTabChange}>
             <Tab value={0}>Flav</Tab>
-            <Tab value={1}>Stack</Tab>
-            <Tab value={2}>Contact</Tab>
+            <Tab value={1}>Contact</Tab>
+            <Tab value={2}>Stack</Tab>
             <Tab value={3}>Github</Tab>
             <Tab value={4}>CV</Tab>
           </Tabs>
@@ -193,18 +192,73 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
               <>
                 <div>
                   <p>
-                    Developpeur web fullstack en semaine et binoclard a toute
-                    heure, Flav est le createur de FlavOS.
+                    Developpeur fullstack en semaine et{" "}
+                    <span className="italic">binoclard</span> a toute heure,
+                    Flav est le createur de FlavOS.
                   </p>
                   <p>
                     Flav est disponible par e-mail et par discord, si vous avez
                     besoin de le contacter a propos de FlavOS ou pour des
-                    raisons professionnelles.
+                    raisons professionnelles. Vous trouverez toutes ses
+                    informations de contact dans l'onglet dedie.
+                  </p>
+                  <p>
+                    <span className="bold italic">Binoclard</span> : Personne
+                    qui se revendique comme tel, avec des hobbys niches portes
+                    sur l'informatique, les jeux de role, les jeux de carte, la
+                    musique... Loin d'être un terme pejoratif, il permet de
+                    s'approprier le terme "nerd" en le francisant. On peut donc
+                    etre un binoclard de Magic The Gathering, un binoclard de
+                    musique, de Donjons et Dragon... voir le tout combine.
+                  </p>
+                  <p>
+                    Plus d'informations sur la communaute binoclard dans
+                    l'application dediee.
                   </p>
                 </div>
               </>
             )}
             {activeTab === 1 && (
+              // Contact
+              <>
+                <div>
+                  <p>Vous pouvez joindre Flav par les moyens suivant :</p>
+                  <p>📞 : +33 6 38 88 72 82</p>
+                  <p>
+                    📧 :{" "}
+                    <span
+                      className="link"
+                      onClick={() => {
+                        window.open("mailto:contact-flav-os@pm.me", "tab");
+                      }}
+                    >
+                      contact-flav-os@pm.me
+                    </span>
+                  </p>
+                  <p>
+                    👔 :{" "}
+                    <a
+                      href="https://www.linkedin.com/in/flavien-belli-3b7b3b157"
+                      target="_blank"
+                      className="link"
+                    >
+                      Flavien Belli
+                    </a>
+                  </p>
+                  <p>
+                    🎮 :{" "}
+                    <a
+                      href="https://discord.com/users/410071811016097802"
+                      target="_blank"
+                      className="link"
+                    >
+                      Discord
+                    </a>
+                  </p>
+                </div>
+              </>
+            )}
+            {activeTab === 2 && (
               // Stack
               <>
                 <GroupBox label="Technologies">
@@ -223,22 +277,6 @@ const AboutApplication: FunctionComponent<DefaultApplicationProps> = (
                     </p>
                   </div>
                 </GroupBox>
-              </>
-            )}
-            {activeTab === 2 && (
-              // Contact
-              <>
-                <div>
-                  <p>
-                    Developpeur web fullstack en semaine et binoclard a toute
-                    heure, Flav est le createur de FlavOS.
-                  </p>
-                  <p>
-                    Flav est disponible par e-mail et par discord, si vous avez
-                    besoin de le contacter a propos de FlavOS ou pour des
-                    raisons professionnelles.
-                  </p>
-                </div>
               </>
             )}
             {activeTab === 3 && (
