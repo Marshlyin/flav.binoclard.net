@@ -38,22 +38,39 @@ const OSApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
           {seeMore && (
             <>
               <Separator />
-              <div>
+              <div className="mt-16">
+                <p className="bold">Pourquoi FlavOS ?</p>
                 <p>
-                  Sit magna ut non veniam commodo qui voluptate in consectetur
-                  proident tempor aute ipsum.
+                  Windows 95 est le premier systeme d'exploitation que j'ai
+                  connu. L'esthetique grise, austere, fait partie integrante de
+                  mon initiation a l'informatique, a l'epoque ou les OS
+                  n'etaient pas encore bourres de pub et de trackers, et
+                  servaient directement a liberer toute la creativite des
+                  utilisateurs sans contrepartie.
                 </p>
                 <p>
-                  Sit magna ut non veniam commodo qui voluptate in consectetur
-                  proident tempor aute ipsum.
+                  Ayant deserte Windows depuis quelques annees, je rend lui rend
+                  cependant hommage via l'interface de ce site. Rassurez-vous,
+                  aucun tracker n'est present sur ce site (encore heureux).
                 </p>
+              </div>
+              <div className="mt-8">
+                <p className="bold">Comment est fait FlavOS ?</p>
                 <p>
-                  Sit magna ut non veniam commodo qui voluptate in consectetur
-                  proident tempor aute ipsum.
-                </p>
-                <p>
-                  Sit magna ut non veniam commodo qui voluptate in consectetur
-                  proident tempor aute ipsum.
+                  Base sur{" "}
+                  <a
+                    href="https://github.com/react95-io/React95"
+                    target="_blank"
+                  >
+                    React95
+                  </a>{" "}
+                  (une librairie de componsants React permettant de simuler un
+                  environnement de bureau Windows95), ce site cherche a garder
+                  l'architecture et la rigueur des projets auquels j'ai pu
+                  participer, tout en restant suffisament simple pour ce qu'il
+                  est. Un composant parent, l'OS, gere l'etat de toutes les
+                  "applications", et ces dernieres peuvent interagir entre elle
+                  grace a des fonctions de l'OS. Simple non ?
                 </p>
               </div>
               <div>
