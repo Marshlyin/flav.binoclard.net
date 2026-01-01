@@ -14,7 +14,7 @@ const OsMenu: FunctionComponent<OsMenuProps> = (props: OsMenuProps) => {
   return (
     <>
       <Button onClick={() => setOpen(!open)} active={open} className="bold">
-        Start
+        Demarrer
       </Button>
       {open && (
         <MenuList className="menu" onClick={() => setOpen(false)}>

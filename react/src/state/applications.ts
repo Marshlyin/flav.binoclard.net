@@ -40,7 +40,7 @@ export const defaultOpenedApplication: WindowId[] = ["OS_HELP"];
 export const applications: Application[] = [
   {
     id: "OS_ABOUT",
-    label: "About",
+    label: "A propos",
     icon: "👨🏼‍💻",
     component: AboutApplication,
     menu_category: "Main",
@@ -72,7 +72,7 @@ export const applications: Application[] = [
   },
   {
     id: "OS_HELP",
-    label: "Help",
+    label: "Aide",
     icon: "🛟",
     component: HelpApplication,
     menu_category: "Secondary",
@@ -80,7 +80,7 @@ export const applications: Application[] = [
   },
   {
     id: "OS_SETTINGS",
-    label: "Settings",
+    label: "Parametres",
     icon: "⚙️",
     component: SettingsApplication,
     menu_category: "Secondary",
@@ -88,7 +88,7 @@ export const applications: Application[] = [
   },
   {
     id: "OS_LOGOUT",
-    label: "Logout",
+    label: "Deconnexion",
     icon: "🔙",
     component: DefaultApplication,
     menu_category: "Secondary",
