@@ -7,6 +7,7 @@ import OSApplication from "../content/applications/OSApplication";
 import type { Position } from "react-rnd";
 import BinoclardApplication from "../content/applications/BinoclardApplication";
 import ChangelogApplication from "../content/applications/ChangelogApplication";
+import TerminalApplication from "../content/applications/TerminalApplication";
 
 export interface Application {
   id: WindowId;
@@ -33,6 +34,7 @@ export type WindowId =
   | "OS_BINOCLARD"
   | "OS_OS"
   | "OS_CHANGELOG"
+  | "OS_CONSOLE"
   | "OS_SETTINGS"
   | "OS_HELP"
   | "OS_LOGOUT";
@@ -69,6 +71,14 @@ export const applications: Application[] = [
     label: "Changelog",
     icon: "📋",
     component: ChangelogApplication,
+    menu_category: "Main",
+    disabled: false,
+  },
+  {
+    id: "OS_CONSOLE",
+    label: "Console",
+    icon: "💲",
+    component: TerminalApplication,
     menu_category: "Main",
     disabled: false,
   },

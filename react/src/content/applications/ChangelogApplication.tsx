@@ -49,6 +49,7 @@ const ChangelogApplication: FunctionComponent<DefaultApplicationProps> = (
                   propos
                 </p>
                 <p>- Ajout d'informations et de nouvelles applications</p>
+                <p>- Remise en etat du terminal (dostoy)</p>
               </div>
             </>
           )}
