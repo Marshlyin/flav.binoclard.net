@@ -6,6 +6,7 @@ import AboutApplication from "../content/applications/AboutApplication";
 import OSApplication from "../content/applications/OSApplication";
 import type { Position } from "react-rnd";
 import BinoclardApplication from "../content/applications/BinoclardApplication";
+import ChangelogApplication from "../content/applications/ChangelogApplication";
 
 export interface Application {
   id: WindowId;
@@ -67,7 +68,7 @@ export const applications: Application[] = [
     id: "OS_CHANGELOG",
     label: "Changelog",
     icon: "📋",
-    component: DefaultApplication,
+    component: ChangelogApplication,
     menu_category: "Main",
     disabled: false,
   },
