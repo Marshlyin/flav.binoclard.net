@@ -5,6 +5,7 @@ import SettingsApplication from "../content/applications/SettingsApplication";
 import AboutApplication from "../content/applications/AboutApplication";
 import OSApplication from "../content/applications/OSApplication";
 import type { Position } from "react-rnd";
+import BinoclardApplication from "../content/applications/BinoclardApplication";
 
 export interface Application {
   id: WindowId;
@@ -50,7 +51,7 @@ export const applications: Application[] = [
     id: "OS_BINOCLARD",
     label: "Binoclard",
     icon: "🤓",
-    component: DefaultApplication,
+    component: BinoclardApplication,
     menu_category: "Main",
     disabled: false,
   },

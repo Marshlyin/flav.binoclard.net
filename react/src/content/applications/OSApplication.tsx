@@ -59,6 +59,13 @@ const OSApplication: FunctionComponent<DefaultApplicationProps> = (props) => {
                 <p>
                   Base sur{" "}
                   <a
+                    href="https://github.com/bokuweb/react-rnd"
+                    target="_blank"
+                  >
+                    React-Rnd
+                  </a>{" "}
+                  et
+                  <a
                     href="https://github.com/react95-io/React95"
                     target="_blank"
                   >
