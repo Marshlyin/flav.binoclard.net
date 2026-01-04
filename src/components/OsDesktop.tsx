@@ -1,14 +1,14 @@
 import { useEffect, useState, type FunctionComponent, type JSX } from "react";
 import { ThemeProvider } from "styled-components";
-import type { Application, WindowId } from "../state/applications";
+import type { Application, WindowId } from "../state/applications.ts";
 import {
   applications,
   defaultOpenedApplication,
 } from "../state/applications.ts";
 import type { BackgroundsName } from "../themes/backgrounds.ts";
 import backgrounds from "../themes/backgrounds.ts";
-import themes, { type ThemeName } from "../themes/theme";
-import OsAppBar from "./taskbar/OsAppBar";
+import themes, { type ThemeName } from "../themes/theme.ts";
+import OsAppBar from "./taskbar/OsAppBar.tsx";
 interface OsDesktopProps {
   children?: string | JSX.Element | JSX.Element[];
 }
