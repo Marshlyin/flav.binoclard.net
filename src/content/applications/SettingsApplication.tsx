@@ -1,0 +1,93 @@
+import { type FunctionComponent } from "react";
+import { Button, GroupBox, Monitor, Select } from "react95";
+import type { SelectOption } from "react95/dist/Select/Select.types";
+import OsWindow from "../../components/window/OsWindow";
+import type { DefaultApplicationProps } from "../../state/applications";
+import type { BackgroundsName } from "../../themes/backgrounds";
+import backgrounds from "../../themes/backgrounds";
+import themes, { type ThemeName } from "../../themes/theme";
+import { mapObjetKeysToSelectOption } from "../../utils/utils";
+
+interface SettingsApplicationProps extends DefaultApplicationProps {
+  theme: ThemeName;
+  onSelectTheme: React.Dispatch<React.SetStateAction<ThemeName>>;
+  background: BackgroundsName;
+  onSelectBackground: React.Dispatch<React.SetStateAction<BackgroundsName>>;
+}
+
+const SettingsApplication: FunctionComponent<SettingsApplicationProps> = (
+  props
+) => {
+  const {
+    key,
+    position,
+    title,
+    onClose,
+    isFocused,
+    setFocused,
+    theme,
+    onSelectTheme,
+    background,
+    onSelectBackground,
+  } = props;
+
+  const themeOptions: SelectOption<ThemeName>[] =
+    mapObjetKeysToSelectOption(themes);
+
+  const onChangeTheme = <T,>(selectedOption: SelectOption<T>) => {
+    onSelectTheme(selectedOption.value as ThemeName);
+  };
+
+  const backgroundOptions: SelectOption<BackgroundsName>[] =
+    mapObjetKeysToSelectOption(backgrounds);
+
+  const onChangeBackground = <T,>(selectedOption: SelectOption<T>) => {
+    onSelectBackground(selectedOption.value as BackgroundsName);
+  };
+
+  return (
+    <>
+      <OsWindow
+        key={key}
+        title={title}
+        position={position}
+        onClose={onClose}
+        withToolbar={false}
+        size="medium"
+        isFocused={isFocused}
+        setFocused={setFocused}
+      >
+        <div className="mb-16">
+          <GroupBox label="Fond d'ecran">
+            <Monitor
+              backgroundStyles={{ background: backgrounds[background] }}
+            />
+            <div className="mt-16">
+              <Select
+                defaultValue={background}
+                options={backgroundOptions}
+                menuMaxHeight={160}
+                width={160}
+                onChange={onChangeBackground}
+              />
+            </div>
+          </GroupBox>
+          <GroupBox label="Theme">
+            <Select
+              defaultValue={theme}
+              options={themeOptions}
+              menuMaxHeight={160}
+              width={160}
+              onChange={onChangeTheme}
+            />
+          </GroupBox>
+        </div>
+        <div className="align-right">
+          <Button onClick={onClose}>Trop Beau !</Button>
+        </div>
+      </OsWindow>
+    </>
+  );
+};
+
+export default SettingsApplication;

@@ -1,0 +1,33 @@
+html {
+  background-color: var(--app-background);
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0% !important;
+  width: 100% !important;
+  top: unset !important;
+  z-index: 999 !important;
+
+  .menu {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+  }
+}
+
+.desktop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.desktop::before {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: pre;
+  color: white;
+  content: "      ######### ####                           #####     #########     \A""    :###::::###::###                         ###:::###  ###:::::###   \A""    :::    ###  :###   ######   ##### ##### ###   ::###:###    :::    \A""          ###   :###  :::::### ::### ::### :###    :###::#########    \A""         ###    :###   #######  :###  :### :###    :### ::::::::###   \A""        ###     :###  ###::###  ::### ###  ::###   ###  ###    :###   \A""       ###      #####::########  ::#####    :::#####:  ::#########    \A""      :::      :::::  ::::::::    :::::       ::::::    :::::::::     ";
+}
